@@ -9,6 +9,7 @@ Screen::Screen() {
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
   WIDTH = w.ws_col;
   HEIGHT = w.ws_row;
+  canvas = new byte[WIDTH * HEIGHT];
   Setup();
   Clear();
 }

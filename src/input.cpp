@@ -6,7 +6,6 @@
 #include <termios.h>
 #include <unistd.h>
 
-static int ttyfd = STDIN_FILENO;
 static struct termios orig_termios;
 
 void Input::Setup() {
@@ -47,12 +46,12 @@ void Input::_SetTTYRaw() {
   raw.c_cc[VTIME] = 8; /* after a byte or .8 seconds */
 
   /* put terminal in raw mode after flushing */
-  tcsetattr(ttyfd, TCSAFLUSH, &raw);
+  tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
 }
 
 int Input::_ResetTTY() {
   /* flush and reset */
-  if (tcsetattr(ttyfd, TCSAFLUSH, &orig_termios) < 0)
+  if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios) < 0)
     return -1;
   return 0;
 }

@@ -1,5 +1,5 @@
 #include "camera.hpp"
-#include "worldMap.h"
+#include "worldMap.hpp"
 
 Camera::Camera() {
   this->position = vec2(22, 12);

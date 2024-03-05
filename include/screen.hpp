@@ -26,8 +26,8 @@ constexpr int dW = 9, dH = 9; // 字体大小
 
 class Screen {
 public:
-  int WIDTH = 80;
-  int HEIGHT = 40;
+  int WIDTH;
+  int HEIGHT;
 
   Screen();
   // 画布清除
@@ -46,7 +46,7 @@ public:
   ~Screen();
 
 private:
-  byte *canvas = new byte[WIDTH * HEIGHT];
+  byte *canvas;
 
   void Setup();
 
